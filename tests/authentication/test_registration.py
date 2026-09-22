@@ -1,7 +1,7 @@
 import pytest
 
-from pages.dashboard_page import DashboardPage
-from pages.registration_page import RegistrationPage
+from pages.authentication.registration_page import RegistrationPage
+from pages.dashboard.dashboard_page import DashboardPage
 
 
 @pytest.mark.registration
