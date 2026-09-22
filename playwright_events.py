@@ -10,10 +10,10 @@ def log_request(request: Request):
 def log_response(response: Response):
     print(f"Response: {response.url}")
 
+
 def log_response_body(response):
     if response.ok:
         print(f"Response body: {response.body()}")  # Тело ответа
-
 
 
 with sync_playwright() as playwright:
@@ -31,5 +31,3 @@ with sync_playwright() as playwright:
 
     # Задержка для завершения всех запросов
     page.wait_for_timeout(3000)
-
-

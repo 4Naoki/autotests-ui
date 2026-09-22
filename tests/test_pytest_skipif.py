@@ -17,4 +17,3 @@ def test_system_version_valid():  # В текущей конфигурации �
 )
 def test_system_version_invalid():  # Этот автотест не запустится
     pass
-
