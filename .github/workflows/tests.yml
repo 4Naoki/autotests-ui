@@ -56,6 +56,18 @@ jobs:
           allure_history: allure-history  # Указываем каталог для истории отчётов Allure
           gh_pages: gh-pages
 
+      - name: Debug generated Allure report
+        if: always()
+        run: |
+          echo "=== allure-results ==="
+          find allure-results -maxdepth 2 -type f | head -50 || true
+
+          echo "=== gh-pages before deploy ==="
+          find gh-pages -maxdepth 2 -type f | head -50 || true
+
+          echo "=== allure-history ==="
+          find allure-history -maxdepth 3 -type f | head -100 || true
+
       # 7. Шаг для деплоя отчёта Allure на GitHub Pages, чтобы его можно было просматривать в браузере
       - name: Deploy report to Github Pages
         if: always()  # Выполняется всегда, независимо от успеха других шагов
