@@ -38,14 +38,14 @@ jobs:
         run: |
           pytest -m regression --alluredir=allure-results --numprocesses 2
 
-#      # 5. Шаг для получения истории отчётов Allure, если она существует
-#      - name: Get Allure history
-#        uses: actions/checkout@v4  # Опять клонируем репозиторий, чтобы получить историю отчётов
-#        if: always()  # Всегда выполняем, независимо от успеха или неудачи предыдущих шагов
-#        continue-on-error: true  # Если здесь возникнет ошибка, workflow всё равно продолжит выполнение
-#        with:
-#          ref: gh-pages  # Указываем ветку gh-pages для получения отчётов
-#          path: gh-pages  # Указываем путь для сохранения отчётов
+      # 5. Шаг для получения истории отчётов Allure, если она существует
+      - name: Get Allure history
+        uses: actions/checkout@v4  # Опять клонируем репозиторий, чтобы получить историю отчётов
+        if: always()  # Всегда выполняем, независимо от успеха или неудачи предыдущих шагов
+        continue-on-error: true  # Если здесь возникнет ошибка, workflow всё равно продолжит выполнение
+        with:
+          ref: gh-pages  # Указываем ветку gh-pages для получения отчётов
+          path: gh-pages  # Указываем путь для сохранения отчётов
 
 
 #      - name: Remove git metadata from Allure history
@@ -83,4 +83,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}  # Токен для аутентификации на GitHub
           publish_branch: gh-pages  # Указываем, что отчёт будет опубликован в ветке gh-pages
           publish_dir: allure-history  # Указываем папку, которая будет опубликована на GitHub Pages
-          force_orphan: true
+#          force_orphan: true
