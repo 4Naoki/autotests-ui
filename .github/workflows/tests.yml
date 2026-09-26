@@ -50,7 +50,9 @@ jobs:
 
       - name: Remove git metadata from Allure history
         if: always()
-        run: rm -rf gh-pages/.git
+        run: |
+          rm -rf gh-pages/.git
+          rm -f gh-pages/.gitignore
 
       # 6. Шаг для генерации и отображения отчёта Allure
       - name: Generates Allure Report with history
@@ -72,10 +74,6 @@ jobs:
 
           echo "=== allure-history ==="
           find allure-history -maxdepth 3 -type f | head -100 || true
-
-      - name: Remove gitignore from generated site
-        if: always()
-        run: rm -f allure-history/.gitignore
 
       # 7. Шаг для деплоя отчёта Allure на GitHub Pages, чтобы его можно было просматривать в браузере
       - name: Deploy report to Github Pages
