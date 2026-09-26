@@ -19,7 +19,7 @@ with sync_playwright() as playwright:
     registration_button = page.get_by_test_id('registration-page-registration-button')
     registration_button.click()
 
-    context.storage_state(path="browser-state.json")
+    context.storage_state(path="../../browser-state.json")
 
     context_new = browser.new_context(storage_state="browser-state.json")
     contexted_page = context_new.new_page()

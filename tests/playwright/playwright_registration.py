@@ -24,7 +24,7 @@ with sync_playwright() as playwright:
     registration_button.click()
 
     # Сохраняем состояние браузера (куки и localStorage) в файл для дальнейшего использования
-    context.storage_state(path="browser-state.json")
+    context.storage_state(path="../../browser-state.json")
 
     dashboard_header = page.get_by_test_id('dashboard-toolbar-title-text')
     expect(dashboard_header).to_be_visible()
